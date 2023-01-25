@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Random Number</title>
+
+    <!-- bootstrap css file link -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css?v=1.03" />
+  </head>
+
+  <body onload="onload();">
+    <section class="">
+      <div class="container-fluid">
+        <div class="row" style="margin-top: 0%">
+          <div class="col-sm">
+            <div class="col-lg-12" style="padding-top: 2%">
+              <div class="select-number-area" style="padding-top: 5px">
+                <h4 class="title">乱数</h4>
+
+                <div class="cmn-form login-form">
+                  <div id="dv3O">
+                    <div class="frm-group">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <button class="btn btn-primary" id="resetBtn">
+                                Reset
+                              </button>
+                            </td>
+                            <td style="width: 70px">最小数:</td>
+                            <td>
+                              <input
+                                type="number"
+                                id="min"
+                                value="1"
+                                readonly
+                                placeholder="Min Number"
+                                style="width: auto"
+                              />
+                            </td>
+                            <td style="width: 70px">最大数:</td>
+                            <td>
+                              <input
+                                type="number"
+                                id="max"
+                                placeholder="Max Number"
+                                style="width: auto"
+                              />
+                            </td>
+                            <td style="width: 5%">時間:</td>
+                            <td style="width: 10%">
+                              <select id="seconds">
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                              </select>
+                            </td>
+                            <td>&nbsp;秒</td>
+                            <td><label>結果数:</label></td>
+                            <td>
+                              <select id="results">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="100">100</option>
+                              </select>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="frm-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-11">
+            <div
+              class="col-lg-12"
+              style="height: 100%; padding-top: 5%; border-color: #333"
+            >
+              <div class="frm-group">
+                <a
+                  style="
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 4px;
+                    color: white;
+                    background-image: -webkit-linear-gradient(
+                      90deg,
+                      #2f2f2f 0%,
+                      #000000 100%,
+                      rgb(0 0 0) 100%
+                    );
+                  "
+                  class="cmn-btn"
+                  id="aQuay"
+                  onclick="generateRandom()"
+                >
+                  スタート
+                </a>
+              </div>
+              <div
+                class="alert alert-success text-center hide"
+                role="alert"
+                id="output"
+                style="
+                  margin-top: 5px;
+                  font-weight: bold;
+                  background-color: #ffffff;
+                  color: red;
+                  font-size: 100px;
+                "
+              >
+                00
+              </div>
+            </div>
+          </div>
+          <div class="col-1">
+            <table border="1" id="table">
+              <div class="frm-group">
+                <a
+                  style="
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 4px;
+                    color: white;
+                    background-image: -webkit-linear-gradient(
+                      90deg,
+                      #021342 0%,
+                      #0415ad 100%,
+                      rgb(11, 4, 99) 100%
+                    );
+                  "
+                  class="cmn-btn"
+                  id="randomizeBtn"
+                  onclick="generateRandom()"
+                >
+                  結果
+                </a>
+              </div>
+              <tbody
+                id="results-body"
+                style="color: red; font-weight: bold; font-size: 35px"
+              ></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      var max = document.getElementById("max");
+      window.onload = function () {
+        max.addEventListener("input", function () {
+          for (let i = 1; i <= max.value; i++) {
+            arrays.push(i);
+          }
+        });
+      };
+
+      let intervalId;
+      var kq = [];
+      var newKq = [];
+      var arrays = [];
+
+      function generateRandom() {
+        var seconds = document.getElementById("seconds").value;
+        var results = document.getElementById("results").value;
+        var output = document.getElementById("output");
+        var resultsBody = document.getElementById("results-body");
+        var resetBtn = document.getElementById("resetBtn");
+        var randomizeBtn = document.getElementById("randomizeBtn");
+
+        // start sound
+        var startSound = new Audio("path/to/sound1.mp3");
+        startSound.play();
+        var second = seconds * 1000;
+        // generate random numbers
+        var number = "";
+
+        function unique(arr) {
+          var newArr = [];
+          for (var i = 0; i < arr.length; i++) {
+            if (newArr.indexOf(arr[i]) === -1) {
+              newArr.push(arr[i]);
+            }
+          }
+          return newArr;
+        }
+        function arrayRemove(arr, value) {
+          return arr.filter(function (ele) {
+            return ele != value;
+          });
+        }
+        //var newKq = [];
+        var index;
+        intervalId = setInterval(() => {
+          let numbers = [];
+          let div = arrays.length % results;
+          if (arrays.length < results) {
+            while (true) {
+              index = Math.floor(Math.random() * arrays.length);
+              numbers.push(arrays[index]);
+              numbers = unique(numbers);
+
+              if (numbers.length == div) {
+                break;
+              }
+            }
+          } else {
+            while (true) {
+              index = Math.floor(Math.random() * arrays.length);
+              numbers.push(arrays[index]);
+              numbers = unique(numbers);
+
+              if (numbers.length == results) {
+                break;
+              }
+            }
+          }
+          //newNum = unique(numbers);
+          kq = numbers;
+          output.innerHTML = kq.join("-");
+
+          return kq;
+        }, 50);
+
+        for (let i = 0; i < kq.length; i++) {
+          arrays = arrayRemove(arrays, kq[i]);
+        }
+        // wait for specified number of seconds
+        setTimeout(function () {
+          // end sound
+          clearInterval(intervalId);
+          var endSound = new Audio("path/to/sound2.mp3");
+          startSound.pause();
+          endSound.play();
+          var element;
+          // display numbers
+          var table = document.getElementById("table");
+          for (var i = 0; i < kq.length; i++) {
+            var row = table.insertRow();
+            var cell = row.insertCell();
+            cell.innerHTML = kq[i];
+          }
+          resultsBody.innerHTML += "Result:" + kq.join("");
+        }, second);
+        resetBtn.addEventListener("click", function () {
+          resultsBody.innerHTML = "";
+        });
+
+        if (arrays.length === 0) {
+          alert(
+            "すべての番号が使用されています。もう一度開始するには、ページを更新してください。"
+          );
+          return;
+        }
+      }
+    </script>
+    <!-- bootstrap js file link -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- main js file link -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
