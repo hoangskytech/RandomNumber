@@ -22,7 +22,6 @@
 
     <section>
         <div class="container-sm">
-
             <div class="row" style="margin-top: 0%">
                 <div class="col-11">
                     <div class="col-lg-12" style="padding-top: 5px">
@@ -44,12 +43,14 @@
                                                     <td>
                                                         <input type="number" id="min" value="1" readonly placeholder="Min Number" style="width: auto" />
                                                     </td> -->
-                                                    <td style="width: 70px;text-align: right;">人数:</td>
-                                                    <td>
-                                                        <input type="number" id="max" placeholder="Max Number" style="width: 120px;" />
+                                                    <td style="width: 70px; text-align: right">
+                                                        人数:
                                                     </td>
-                                                    <td style="width: 5%;text-align: right;">時間:</td>
-                                                    <td style="width: 10%; ">
+                                                    <td>
+                                                        <input type="number" id="max" placeholder="Max Number" style="width: 120px" />
+                                                    </td>
+                                                    <td style="width: 5%; text-align: right">時間:</td>
+                                                    <td style="width: 10%">
                                                         <select id="seconds">
                                 <option value="3">3</option>
                                 <option value="5">5</option>
@@ -57,7 +58,7 @@
                               </select>
                                                     </td>
                                                     <td style="width: 5%">&nbsp;秒</td>
-                                                    <td style="text-align: right;">結果数:</td>
+                                                    <td style="text-align: right">結果数:</td>
                                                     <td>
                                                         <select id="results">
                                 <option value="1">1</option>
@@ -67,7 +68,6 @@
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
-                                
                               </select>
                                                     </td>
                                                 </tr>
@@ -90,8 +90,8 @@
                       background-image: -webkit-linear-gradient(
                         90deg,
                         #021342 0%,
-                      #0415ad 100%,
-                      rgb(11, 4, 99) 100%
+                        #0415ad 100%,
+                        rgb(11, 4, 99) 100%
                       );
                     " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
                     スタート
@@ -109,31 +109,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-1" style="padding-top: 5px; height: 770px; overflow: scroll;">
-                    <table border="1" id="table">
-                        <div class="frm-group">
-                            <p style="
-                    cursor: pointer;
-                    width: 100%;
-                    border-radius: 4px;
-                    color: white;
-                    background-image: -webkit-linear-gradient(
-                      90deg,
-                      #021342 0%,
-                      #0415ad 100%,
-                      rgb(11, 4, 99) 100%
-                    );
-                  " class="cmn-btn" id="#">
-                                結果
-                            </p>
-                        </div>
-                        <tbody id="results-body" style="
+                <div class="col-1" style="padding-top: 5px">
+                    <div class="frm-group">
+                        <p style="
+                  cursor: pointer;
+                  width: 100%;
+                  border-radius: 4px;
+                  color: white;
+                  background-image: -webkit-linear-gradient(
+                    90deg,
+                    #021342 0%,
+                    #0415ad 100%,
+                    rgb(11, 4, 99) 100%
+                  );
+                " class="cmn-btn" id="#">
+                            結果
+                        </p>
+                    </div>
+                    <div class="scrollbar " id="style-1">
+                        <table border="1" id="table">
+                            <tbody id="results-body" style="
                   color: rgb(255, 255, 255);
                   font-weight: bold;
                   font-size: 35px;
                   text-align: center;
                 "></tbody>
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="row"></div>
