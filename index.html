@@ -10,21 +10,27 @@
 
     <!-- bootstrap css file link -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css?v=1.03" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <section class="">
-        <div class="container-fluid">
+    <style>
+        body {
+            background-image: url("img/background.png");
+        }
+    </style>
+
+    <section>
+        <div class="container-sm">
+
             <div class="row" style="margin-top: 0%">
-                <div class="col-sm">
-                    <div class="col-lg-12" style="padding-top: 2%">
+                <div class="col-11">
+                    <div class="col-lg-12" style="padding-top: 5px">
                         <div class="select-number-area" style="padding-top: 5px">
                             <h4 class="title">乱数</h4>
-
                             <div class="cmn-form login-form">
                                 <div id="dv3O">
-                                    <div class="frm-group">
+                                    <div class="form-group">
                                         <table>
                                             <tbody>
                                                 <tr>
@@ -38,20 +44,20 @@
                                                     <td>
                                                         <input type="number" id="min" value="1" readonly placeholder="Min Number" style="width: auto" />
                                                     </td> -->
-                                                    <td style="width: 70px">人数:</td>
+                                                    <td style="width: 70px;text-align: right;">人数:</td>
                                                     <td>
-                                                        <input type="number" id="max" placeholder="Max Number" style="width: auto" />
+                                                        <input type="number" id="max" placeholder="Max Number" style="width: 120px;" />
                                                     </td>
-                                                    <td style="width: 5%">時間:</td>
-                                                    <td style="width: 10%">
+                                                    <td style="width: 5%;text-align: right;">時間:</td>
+                                                    <td style="width: 10%; ">
                                                         <select id="seconds">
-                                                            <option value="3">3</option>
-                                                            <option value="5">5</option>
-                                                            <option value="10">10</option>
-                                                        </select>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                              </select>
                                                     </td>
-                                                    <td>&nbsp;秒</td>
-                                                    <td><label>結果数:</label></td>
+                                                    <td style="width: 5%">&nbsp;秒</td>
+                                                    <td style="text-align: right;">結果数:</td>
                                                     <td>
                                                         <select id="results">
                                 <option value="1">1</option>
@@ -61,7 +67,7 @@
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
-                                <option value="100">100</option>
+                                
                               </select>
                                                     </td>
                                                 </tr>
@@ -73,39 +79,37 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-11">
-                    <div class="col-lg-12" style="height: 100%; padding-top: 5%; border-color: #333">
-                        <div class="frm-group">
-                            <button style="
-                    cursor: pointer;
-                    width: 100%;
-                    border-radius: 4px;
-                    color: white;
-                    background-image: -webkit-linear-gradient(
-                      90deg,
-                      #2f2f2f 0%,
-                      #000000 100%,
-                      rgb(0 0 0) 100%
-                    );
-                  " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
-                  スタート
-                </button>
-                        </div>
-                        <div class="alert alert-success text-center hide" role="alert" id="output" style="
-                  margin-top: 5px;
-                  font-weight: bold;
-                  background-color: #ffffff;
-                  color: red;
-                  font-size: 100px;
-                ">
-                            00
+                    <div class="col-12">
+                        <div class="col-lg-12" style="height: 100%; padding-top: 5px; border-color: #333">
+                            <div class="frm-group">
+                                <button style="
+                      cursor: pointer;
+                      width: 100%;
+                      border-radius: 4px;
+                      color: white;
+                      background-image: -webkit-linear-gradient(
+                        90deg,
+                        #021342 0%,
+                      #0415ad 100%,
+                      rgb(11, 4, 99) 100%
+                      );
+                    " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
+                    スタート
+                  </button>
+                            </div>
+                            <div class="alert alert-success text-center hide" role="alert" id="output" style="
+                    margin-top: 5px;
+                    font-weight: bold;
+                    background-color: #ffffff;
+                    color: red;
+                    font-size: 120px;
+                  ">
+                                00
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-1">
+                <div class="col-1" style="padding-top: 5px; height: 770px; overflow: scroll;">
                     <table border="1" id="table">
                         <div class="frm-group">
                             <p style="
@@ -123,129 +127,19 @@
                                 結果
                             </p>
                         </div>
-                        <tbody id="results-body" style="color: red; font-weight: bold; font-size: 35px"></tbody>
+                        <tbody id="results-body" style="
+                  color: rgb(255, 255, 255);
+                  font-weight: bold;
+                  font-size: 35px;
+                  text-align: center;
+                "></tbody>
                     </table>
                 </div>
             </div>
+            <div class="row"></div>
         </div>
     </section>
-    <script>
-        var max = document.getElementById("max");
-        var arrays = [];
-        window.onload = function() {
-            max.addEventListener("input", function() {
-                for (let i = 1; i <= max.value; i++) {
-                    arrays.push(i);
-                }
-            });
-        };
-        let intervalId;
-        var kq = [];
-
-        function generateRandom() {
-            var seconds = document.getElementById("seconds").value;
-            var results = document.getElementById("results").value;
-            var output = document.getElementById("output");
-            var resultsBody = document.getElementById("results-body");
-            var resetBtn = document.getElementById("resetBtn");
-            var randomizeBtn = document.getElementById("randomizeBtn");
-
-            // start sound
-            var startSound = new Audio("path/to/sound1.mp3");
-            startSound.play();
-
-            // generate random numbers
-            var number = "";
-
-            function unique(arr) {
-                var newArr = [];
-                for (var i = 0; i < arr.length; i++) {
-                    if (newArr.indexOf(arr[i]) === -1) {
-                        newArr.push(arr[i]);
-                    }
-                }
-                return newArr;
-            }
-
-            function arrayRemove(arr, value) {
-                return arr.filter(function(ele) {
-                    return ele != value;
-                });
-            }
-            //var newKq = [];
-            var index;
-            intervalId = setInterval(() => {
-                let numbers = [];
-                let div = arrays.length % results;
-                if (arrays.length == 0) {
-                    return;
-                } else if (arrays.length < results) {
-                    while (true) {
-                        index = Math.floor(Math.random() * arrays.length);
-                        numbers.push(arrays[index]);
-                        numbers = unique(numbers);
-
-                        if (numbers.length == div) {
-                            break;
-                        }
-                    }
-                } else {
-                    while (true) {
-                        index = Math.floor(Math.random() * arrays.length);
-                        numbers.push(arrays[index]);
-                        numbers = unique(numbers);
-
-                        if (numbers.length == results) {
-                            break;
-                        }
-                    }
-                }
-                //newNum = unique(numbers);
-                kq = numbers;
-                output.innerHTML = kq.join("-");
-
-                return kq;
-            }, 50);
-
-            for (let i = 0; i < kq.length; i++) {
-                arrays = arrayRemove(arrays, kq[i]);
-            }
-            // wait for specified number of seconds
-            var myVar = setTimeout(function() {
-                // end sound
-                clearInterval(intervalId);
-                var endSound = new Audio("path/to/sound2.mp3");
-                startSound.pause();
-                endSound.play();
-                if (randomizeBtn.disabled == true) {
-                    endSound.pause();
-                }
-                // display numbers
-                var table = document.getElementById("table");
-                for (var i = 0; i < kq.length; i++) {
-                    var row = table.insertRow();
-                    var cell = row.insertCell();
-                    cell.innerHTML = kq[i];
-                }
-                resultsBody.innerHTML += "---";
-            }, seconds * 1000);
-            resetBtn.addEventListener("click", function() {
-                location.reload();
-            });
-            //
-            if (arrays.length === 0) {
-                alert(
-                    "すべての番号が使用されています。リセットしてください。!"
-                );
-                randomizeBtn.disabled = true;
-                startSound.pause();
-                clearTimeout(myVar);
-
-
-                return;
-            }
-        }
-    </script>
+    <script src="./script.js"></script>
     <!-- bootstrap js file link -->
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- main js file link -->
