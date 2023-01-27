@@ -3403,7 +3403,7 @@ iframe input {
 }
 
 .menu {
-    padding-top: 3.5%;
+    padding-top: 0;
 }
 
 
@@ -3421,7 +3421,8 @@ iframe input {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     width: 100%;
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 100;
 }
 
