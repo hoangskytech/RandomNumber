@@ -1,29 +1,38 @@
+var imgBtn = document.getElementById("imgBtn");
 var max = document.getElementById("max");
-var arrays = [];
-window.onload = function() {
-    max.addEventListener("input", function() {
-        for (let i = 1; i <= max.value; i++) {
-            arrays.push(i);
-        }
-    });
+var arrays = new Array();
+max.onchange = function() {
+    for (let i = 1; i <= max.value; i++) {
+        arrays.push(i)
+    }
 };
 let intervalId;
 var kq = [];
 
+
+
 function generateRandom() {
     var seconds = document.getElementById("seconds").value;
     var results = document.getElementById("results").value;
-    var output = document.getElementById("output");
+    var outputSo = document.getElementById("outputSo");
+    var pOutput = document.getElementById("pOutput");
+
+    //var Hinh = document.getElementById("Hinh");
     var resultsBody = document.getElementById("results-body");
     var resetBtn = document.getElementById("resetBtn");
     var randomizeBtn = document.getElementById("randomizeBtn");
 
+
+    //imgBtn.style.opacity = "100";
+    //Hinh.style.opacity = "100";
+    //Hinh.style.transition = "ease-in 1.5s";
+    outputSo.style.display = "block";
     // start sound
     var startSound = new Audio("path/to/sound1.mp3");
     startSound.play();
 
     // generate random numbers
-    var number = "";
+
 
     function unique(arr) {
         var newArr = [];
@@ -43,11 +52,13 @@ function generateRandom() {
     //var newKq = [];
     var index;
     intervalId = setInterval(() => {
+
         let numbers = [];
         let div = arrays.length % results;
-        if (arrays.length == 0) {
+        if (arrays.length === 0) {
             return;
         } else if (arrays.length < results) {
+
             while (true) {
                 index = Math.floor(Math.random() * arrays.length);
                 numbers.push(arrays[index]);
@@ -63,15 +74,34 @@ function generateRandom() {
                 numbers.push(arrays[index]);
                 numbers = unique(numbers);
 
+
                 if (numbers.length == results) {
                     break;
                 }
             }
         }
         //newNum = unique(numbers);
-        kq = numbers;
-        output.innerHTML = kq.join("-");
 
+        var newNumbers = [];
+        for (let i = 0; i < numbers.length; i += 5) {
+            if (i + 5 > numbers.length) {
+                newNumbers.push(numbers.slice(i, numbers.length));
+            } else {
+                newNumbers.push(numbers.slice(i, i + 5));
+            }
+        }
+
+        var joinNumber = [];
+        for (let i = 0; i < newNumbers.length; i++) {
+            let ele = newNumbers[i].join("-") + `</br>`;
+            joinNumber.push(ele);
+        }
+
+        pOutput.innerHTML = joinNumber.join(" ");
+
+
+
+        kq = numbers;
         return kq;
     }, 50);
 
@@ -96,19 +126,23 @@ function generateRandom() {
             cell.innerHTML = kq[i];
         }
         resultsBody.innerHTML += "-------";
+
+        // Hinh.style.opacity = "0"
+        // Hinh.style.transitionDuration = "0s"
+
+
+        //imgBtn.style.display = "none";
+        //outputSo.style.display = "block";
     }, seconds * 1000);
     resetBtn.addEventListener("click", function() {
         location.reload();
     });
     //
     if (arrays.length === 0) {
-        alert(
-            "すべての番号が使用されています。リセットしてください。!"
-        );
+        alert("すべての番号が使用されています。リセットしてください。!");
         randomizeBtn.disabled = true;
         startSound.pause();
         clearTimeout(myVar);
-
 
         return;
     }

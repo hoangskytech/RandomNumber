@@ -22,11 +22,19 @@
 
     <section>
         <div class="container-sm">
-            <div class="row" style="margin-top: 0%">
-                <div class="col-11">
-                    <div class="col-lg-12" style="padding-top: 5px">
+            <nav class="row menuHover" style="margin-top: 0%">
+                <div class="hoverMenu title">
+                    <h1 style="color: #0415ad; top: 0;">
+                        株式会社スカイテック2023年新年会
+                    </h1>
+                </div>
+                <!-- <div class="hoverMenu" style="padding-top: 5px">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div> -->
+                <div class="col-12 menu">
+                    <div class="col-lg-12" style="">
                         <div class="select-number-area" style="padding-top: 5px">
-                            <h4 class="title">乱数</h4>
+                            <!--  -->
                             <div class="cmn-form login-form">
                                 <div id="dv3O">
                                     <div class="form-group">
@@ -61,7 +69,7 @@
                                                     <td style="text-align: right">結果数:</td>
                                                     <td>
                                                         <select id="results">
-                                <option value="1">1</option>
+                                <option value="1 ">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
@@ -74,73 +82,94 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="frm-group"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="col-lg-12" style="height: 100%; padding-top: 5px; border-color: #333">
-                            <div class="frm-group">
-                                <button style="
-                      cursor: pointer;
-                      width: 100%;
-                      border-radius: 4px;
-                      color: white;
-                      background-image: -webkit-linear-gradient(
-                        90deg,
-                        #021342 0%,
-                        #0415ad 100%,
-                        rgb(11, 4, 99) 100%
-                      );
-                    " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
-                    スタート
-                  </button>
-                            </div>
-                            <div class="alert alert-success text-center hide" role="alert" id="output" style="
-                    margin-top: 5px;
-                    font-weight: bold;
-                    background-color: #ffffff;
-                    color: red;
-                    font-size: 120px;
-                  ">
-                                00
-                            </div>
+                        <div class="frm-group">
+                            <button style="
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 4px;
+                    color: white;
+                    background-image: -webkit-linear-gradient(
+                      90deg,
+                      #021342 0%,
+                      #0415ad 100%,
+                      rgb(11, 4, 99) 100%
+                    );
+                  " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
+                  スタート
+                </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-1" style="padding-top: 5px">
+            </nav>
+            <div class="row">
+                <div class="col-11" style="height: 70%">
+                    <!-- <div class="col-lg-12" style="height: 100%; padding-top: 5px; border-color: #333"> -->
+                    <div class="alert alert-success text-center hide" role="alert" id="outputSo" style="
+                        margin-top: 5px;
+                        font-weight: bold;
+                        background-color: #ffffff;
+                        display: none;
+                        height: 700px;
+                        position: relative;
+                      ">
+                        <div id="pOutput" style="color: red;
+                      font-size: 100px; position: absolute; transform: translateY(-50%); top: 50%;
+                      width: 100%; text-align: center;">
+                        </div>
+                    </div>
+                    <!-- <div id="outputHinh">
+                                    <img id="Hinh" src="./img/img-gacha-start.gif" style="display: block;width: 25%; opacity: 0;" alt="">
+                                    <button id="imgBtn" style="opacity: 0;  transition: all 5s; transition-delay: 3s;" onclick="ketThuc()">終了</button>
+                                </div> -->
+                    <!-- </div> -->
+                </div>
+                <div class="col-1" style="margin-left: auto; z-index: 9999;">
                     <div class="frm-group">
                         <p style="
-                  cursor: pointer;
-                  width: 100%;
-                  border-radius: 4px;
-                  color: white;
-                  background-image: -webkit-linear-gradient(
-                    90deg,
-                    #021342 0%,
-                    #0415ad 100%,
-                    rgb(11, 4, 99) 100%
-                  );
-                " class="cmn-btn" id="#">
+                          cursor: pointer;
+                          width: 100%;
+                          border-radius: 4px;
+                            
+                          color: white;
+                          background-image: -webkit-linear-gradient(
+                            90deg,
+                            #021342 0%,
+                            #0415ad 100%,
+                            rgb(11, 4, 99) 100%
+                          );
+                        " class="cmn-btn" id="#">
                             結果
                         </p>
                     </div>
-                    <div class="scrollbar " id="style-1">
+                    <div class="scrollbar" id="style-1">
                         <table border="1" id="table">
                             <tbody id="results-body" style="
-                  color: rgb(255, 255, 255);
-                  font-weight: bold;
-                  font-size: 35px;
-                  text-align: center;
-                "></tbody>
+                            color: rgb(255, 255, 255);
+                            font-weight: bold;
+                            font-size: 35px;
+                            text-align: center;
+                          "></tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="row"></div>
         </div>
     </section>
+
+    <script>
+        const menu = document.querySelector(".menu");
+        const hoverMenu = document.querySelector(".hoverMenu");
+        const content = document.querySelector(".content");
+        hoverMenu.onclick = function() {
+            menu.classList.toggle("hide");
+            content.classList.toggle("expand");
+        };
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="./script.js"></script>
     <!-- bootstrap js file link -->
     <script src="assets/js/bootstrap.min.js"></script>

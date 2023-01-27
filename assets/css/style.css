@@ -3380,4 +3380,56 @@ iframe input {
 }
 
 
+/* #imgBtn {
+    position: absolute;
+    left: 48.5%;
+    top: 55%;
+} */
+
+#outputSo {
+    position: relative;
+}
+
+#Hinh {
+    left: 40%;
+    top: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+}
+
+.menuHover {
+    position: relative;
+}
+
+.menu {
+    padding-top: 3.5%;
+}
+
+
+/* .menuHover:hover .menu {
+    display: block;
+} */
+
+.hoverMenu {
+    padding-bottom: 3px;
+    background-color: rgb(244, 244, 252);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+.hoverMenu.title {
+    text-transform: capitalize;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+
 /* footer-section css end */
