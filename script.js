@@ -120,12 +120,16 @@ function generateRandom() {
         }
         // display numbers
         var table = document.getElementById("table");
-        for (var i = 0; i < kq.length; i++) {
-            var row = table.insertRow();
+        //resultsBody.innerHTML += "-------";
+        for (var i = kq.length - 1; i >= 0; i--) {
+            var row = table.insertRow(0);
             var cell = row.insertCell();
             cell.innerHTML = kq[i];
         }
-        resultsBody.innerHTML += "-------";
+        //resultsBody.innerHTML += "-------";
+        var row = table.insertRow(0);
+        var cell = row.insertCell();
+        cell.innerHTML = "-------";
 
         // Hinh.style.opacity = "0"
         // Hinh.style.transitionDuration = "0s"

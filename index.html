@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="frm-group">
-                            <button style="
+                            <a href="#scroll" style="
                     cursor: pointer;
                     width: 100%;
                     border-radius: 4px;
@@ -98,24 +98,25 @@
                       rgb(11, 4, 99) 100%
                     );
                   " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
-                  スタート
-                </button>
+                                スタート
+                            </a>
                         </div>
                     </div>
                 </div>
             </nav>
-            <div class="row">
+            <div class="row" id="scroll">
                 <div class="col-11">
                     <!-- <div class="col-lg-12" style="height: 100%; padding-top: 5px; border-color: #333"> -->
                     <div class="alert alert-success text-center hide" role="alert" id="outputSo" style="
                         margin-top: 5px;
                         font-weight: bold;
-                        background-color: #ffffff;
+                        background-color: transparent;
                         display: none;
                         height: 720px;
                         position: relative;
+                        border: none;
                       ">
-                        <div id="pOutput" style="color: red;
+                        <div id="pOutput" style="color: white;
                       font-size: 120px; position: absolute; transform: translateY(-50%); top: 50%;
                       width: 100%; text-align: center;">
                         </div>
