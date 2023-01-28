@@ -22,6 +22,8 @@ function generateRandom() {
     var resetBtn = document.getElementById("resetBtn");
     var randomizeBtn = document.getElementById("randomizeBtn");
 
+    pOutput.classList.toggle("hieuung");
+
 
     //imgBtn.style.opacity = "100";
     //Hinh.style.opacity = "100";
