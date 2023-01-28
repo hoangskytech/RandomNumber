@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Random Number</title>
+
+    <!-- bootstrap css file link -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url("img/background.png");
+        }
+    </style>
+
+    <section>
+        <div class="container-sm">
+            <nav class="row menuHover" style="margin-top: 0%">
+                <div class="hoverMenu title">
+                    <h1 style="color: #0415ad; top: 0;">
+                        株式会社スカイテック2023年新年会
+                    </h1>
+                </div>
+                <!-- <div class="hoverMenu" style="padding-top: 5px">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div> -->
+                <div class="col-11 menu">
+                    <div class="col-lg-12" style="padding-top: 5px">
+                        <div class="select-number-area" style="padding-top: 5px">
+                            <!--  -->
+                            <div class="cmn-form login-form">
+                                <div id="dv3O">
+                                    <div class="form-group">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <button class="btn btn-primary" id="resetBtn">
+                                Reset
+                              </button>
+                                                    </td>
+                                                    <td style="width: 100px"></td>
+                                                    <!-- <td style="width: 70px">最小数:</td>
+                                                    <td>
+                                                        <input type="number" id="min" value="1" readonly placeholder="Min Number" style="width: auto" />
+                                                    </td> -->
+                                                    <td style="width: 70px; text-align: right">
+                                                        人数:
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" id="max" placeholder="Max Number" style="width: 120px" />
+                                                    </td>
+                                                    <td style="width: 5%; text-align: right">時間:</td>
+                                                    <td style="width: 10%">
+                                                        <select id="seconds">
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                              </select>
+                                                    </td>
+                                                    <td style="width: 5%">&nbsp;秒</td>
+                                                    <td style="text-align: right">結果数:</td>
+                                                    <td>
+                                                        <select id="results">
+                                <option value="1 ">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                              </select>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frm-group">
+                            <button style="
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 4px;
+                    color: white;
+                    background-image: -webkit-linear-gradient(
+                      90deg,
+                      #021342 0%,
+                      #0415ad 100%,
+                      rgb(11, 4, 99) 100%
+                    );
+                  " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
+                  スタート
+                </button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </nav>
+        <div class="col-12" style="height: 70%">
+            <div class="col-lg-12" style="height: 100%; padding-top: 5px; border-color: #333">
+                <div class="alert alert-success text-center content" role="alert" id="outputSo" style="
+                  margin-top: 20%;
+                  font-weight: bold;
+                  background-color: #ffffff;
+                  position: relative;
+                  display: none;
+                  height: 100%;
+                ">
+                    <p id="pOutput" style="
+                    color: red;
+                    display: block;
+                    width: 100%;
+                    font-size: 100px;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    top: 50%;
+                  ">
+                        00
+                    </p>
+                </div>
+                <!-- <div id="outputHinh">
+                                <img id="Hinh" src="./img/img-gacha-start.gif" style="display: block;width: 25%; opacity: 0;" alt="">
+                                <button id="imgBtn" style="opacity: 0;  transition: all 5s; transition-delay: 3s;" onclick="ketThuc()">終了</button>
+                            </div> -->
+            </div>
+        </div>
+        </div>
+        <div class="col-1" style="padding-top: 5px;">
+            <div class="frm-group">
+                <p style="
+                  cursor: pointer;
+                  width: 100%;
+                  border-radius: 4px;
+
+                  color: white;
+                  background-image: -webkit-linear-gradient(
+                    90deg,
+                    #021342 0%,
+                    #0415ad 100%,
+                    rgb(11, 4, 99) 100%
+                  );
+                " class="cmn-btn" id="#">
+                    結果
+                </p>
+            </div>
+            <div class="scrollbar" id="style-1">
+                <table border="1" id="table">
+                    <tbody id="results-body" style="
+                    color: rgb(255, 255, 255);
+                    font-weight: bold;
+                    font-size: 35px;
+                    text-align: center;
+                  "></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row"></div>
+        </div>
+    </section>
+
+    <script>
+        const menu = document.querySelector(".menu");
+        const hoverMenu = document.querySelector(".hoverMenu");
+        const content = document.querySelector(".content");
+        hoverMenu.onclick = function() {
+            menu.classList.toggle("hide");
+            content.classList.toggle("expand");
+        };
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./script.js"></script>
+    <!-- bootstrap js file link -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- main js file link -->
+    <!-- <script src="assets/js/main.js"></script> -->
+</body>
+
+</html>

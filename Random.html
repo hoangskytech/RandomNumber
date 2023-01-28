@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Random Number</title>
+
+    <!-- bootstrap css file link -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css?v=1.03" />
+</head>
+
+<body>
+    <section class="">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-11">
+                    <div class="col-lg-12" style="height: 100%; padding-top: 5%; border-color: #333">
+                        <div class="frm-group">
+                            <button style="
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 4px;
+                    color: white;
+                    background-image: -webkit-linear-gradient(
+                      90deg,
+                      #2f2f2f 0%,
+                      #000000 100%,
+                      rgb(0 0 0) 100%
+                    );
+                  " class="cmn-btn" id="randomizeBtn" onclick="generateRandom()">
+                  スタート
+                </button>
+                        </div>
+                        <div class="alert alert-success text-center hide" role="alert" id="output" style="
+                  margin-top: 5px;
+                  font-weight: bold;
+                  background-color: #ffffff;
+                  color: red;
+                  font-size: 150px;
+                ">
+                            00
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <table border="1" id="table">
+                        <div class="frm-group">
+                            <p style="
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 4px;
+                    color: white;
+                    background-image: -webkit-linear-gradient(
+                      90deg,
+                      #021342 0%,
+                      #0415ad 100%,
+                      rgb(11, 4, 99) 100%
+                    );
+                  " class="cmn-btn" id="#">
+                                結果
+                            </p>
+                        </div>
+                        <tbody class="alert alert-success text-center hide" id="results-body" style="color: red; font-weight: bold; font-size: 35px; text-align: center;"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="./script.js"></script>
+    <!-- bootstrap js file link -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- main js file link -->
+    <!-- <script src="assets/js/main.js"></script> -->
+</body>
+
+</html>
